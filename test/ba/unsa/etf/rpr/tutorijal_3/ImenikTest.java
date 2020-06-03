@@ -8,7 +8,7 @@ import static ba.unsa.etf.rpr.tutorijal_3.FiksniBroj.Grad.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ImenikTest {
-
+/*
     @Test
     void dodaj() {
         Imenik imenik = new Imenik();
@@ -59,6 +59,6 @@ public class ImenikTest {
             result += broj.ispisi() + ",";
         }
         assertEquals("033/123-156,033/123-456,033/123-656,", result);
-    }
+    }*/
 
 }
