@@ -32,6 +32,6 @@ public class FiksniBroj extends TelefonskiBroj {
 
     @Override
     public int Hashcode() {
-        return 0;
+        return broj.hashCode();
     }
 }

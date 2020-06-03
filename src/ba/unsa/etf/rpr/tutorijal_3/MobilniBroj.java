@@ -12,11 +12,11 @@ public class MobilniBroj extends TelefonskiBroj {
 
     @Override
     public String ispisi() {
-        return broj;
+        return "0" + mobilnaMreza + "/" + broj;
     }
 
     @Override
     public int Hashcode() {
-        return 0;
+        return broj.hashCode();
     }
 }
