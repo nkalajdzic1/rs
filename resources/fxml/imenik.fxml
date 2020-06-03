@@ -22,8 +22,11 @@
    <children>
       <Button fx:id="btnDodaj" mnemonicParsing="false" onAction="#dodajAction" text="Dodaj u Imenik" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
       <Button fx:id="btnDajBroj" mnemonicParsing="false" onAction="#actionDajBroj" text="Daj broj kontakta" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="Daj brojeve iz grada" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-      <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <Button fx:id="btnDajBrojeveIzGrada" mnemonicParsing="false" onAction="#actionDajBrojeveIzGrada" prefHeight="26.0" prefWidth="125.0" text="Daj brojeve iz grada" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <Button fx:id="btnDajImenaIzGradova" mnemonicParsing="false" onAction="#actionDajImenaIzGradova" prefHeight="26.0" prefWidth="128.0" text="Daj imena iz gradova" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin></Button>
       <Button fx:id="btnDajIme" mnemonicParsing="false" onAction="#actionDajIme" text="Daj ime kontakta" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
       <Button fx:id="btnBrojeviSaSlovom" maxWidth="-Infinity" mnemonicParsing="false" onAction="#dajSveBrojeveSaSlovom" prefHeight="26.0" prefWidth="122.0" text="Daj brojeve za slovo" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
       <TextField fx:id="fldIme" maxWidth="-Infinity" prefHeight="26.0" prefWidth="171.0" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
@@ -47,11 +50,12 @@
       <TextField fx:id="fldImeOsobe" maxWidth="-Infinity" prefHeight="26.0" prefWidth="195.0" promptText="Ovdje ukucajte ime trazene osobe" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <TextField fx:id="fldBrojOsobe" maxWidth="-Infinity" prefHeight="26.0" prefWidth="105.0" promptText="Broj osobe" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <ChoiceBox fx:id="choiceGradOsobe" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <ChoiceBox maxWidth="-Infinity" prefHeight="26.0" prefWidth="84.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <ChoiceBox fx:id="choiceGradoviZaBrojeve" maxWidth="-Infinity" prefHeight="26.0" prefWidth="84.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
       <ChoiceBox fx:id="choiceSlovo" maxWidth="-Infinity" prefHeight="26.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="374.0" text="ETF Telefonski imenik" GridPane.columnIndex="1" GridPane.columnSpan="3">
          <font>
             <Font size="24.0" />
          </font></Label>
+      <ChoiceBox fx:id="choiceGradoviZaOsobe" maxWidth="-Infinity" prefHeight="26.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

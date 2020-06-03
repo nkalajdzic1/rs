@@ -15,9 +15,9 @@ import java.util.Set;
 
 public class ImenikController {
     Imenik imenik = new Imenik();
-    @FXML Button btnDodaj, btnDajIme, btnDajBroj, btnBrojeviSaSlovom;
+    @FXML Button btnDodaj, btnDajIme, btnDajBroj, btnBrojeviSaSlovom, btnDajBrojeveIzGrada, btnDajImenaIzGradova;
     @FXML TextField fldIme, fldBroj, fldImeOsobe, fldBrojOsobe;
-    @FXML ChoiceBox<FiksniBroj.Grad> choiceGrad, choiceGradOsobe;
+    @FXML ChoiceBox<FiksniBroj.Grad> choiceGrad, choiceGradOsobe, choiceGradoviZaBrojeve, choiceGradoviZaOsobe;
     @FXML ChoiceBox<String> choiceSlovo;
 
     @FXML
@@ -34,6 +34,8 @@ public class ImenikController {
         listaGradova.addAll(Arrays.asList(FiksniBroj.Grad.values()));
         choiceGrad.setItems(listaGradova);
         choiceGradOsobe.setItems(listaGradova);
+        choiceGradoviZaBrojeve.setItems(listaGradova);
+        choiceGradoviZaOsobe.setItems(listaGradova);
 
         ObservableList<String> slova = FXCollections.observableArrayList();
         char slovo = 'A';
@@ -104,15 +106,49 @@ public class ImenikController {
 
     public void dajSveBrojeveSaSlovom() {
         if(choiceSlovo.getValue() != null) {
-            String brojevi = imenik.naSlovo(choiceSlovo.getValue().charAt(0)) +
+            String imena = imenik.naSlovo(choiceSlovo.getValue().charAt(0)) +
                              imenik.naSlovo(choiceSlovo.getValue().toLowerCase().charAt(0));
-            if(!brojevi.isEmpty()) {
+            if(!imena.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText(brojevi);
+                alert.setContentText(imena);
                 alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Ne postoji ni jedan kontak sa slovom " + choiceSlovo.getValue() + ".");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    public void actionDajBrojeveIzGrada() {
+        if(choiceGradoviZaBrojeve.getValue() != null) {
+            Set<TelefonskiBroj> brojevi = imenik.izGradaBrojevi(choiceGradoviZaBrojeve.getValue());
+            if(!brojevi.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                StringBuilder br = new StringBuilder();
+                for(TelefonskiBroj t: brojevi) br.append(t.ispisi()).append("\n");
+                alert.setContentText(br.toString());
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Nema brojeva iz izabranog grada.");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    public void actionDajImenaIzGradova() {
+        if(choiceGradoviZaOsobe.getValue() != null) {
+            Set<String> imena = imenik.izGrada(choiceGradoviZaOsobe.getValue());
+            if(!imena.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                StringBuilder br = new StringBuilder();
+                for(String t: imena) br.append(t).append("\n");
+                alert.setContentText(br.toString());
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Nema imena iz izabranog grada.");
                 alert.showAndWait();
             }
         }
