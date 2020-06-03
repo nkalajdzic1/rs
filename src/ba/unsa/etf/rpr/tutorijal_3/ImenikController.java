@@ -10,13 +10,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 import java.util.Arrays;
+import java.util.Set;
 
 
 public class ImenikController {
     Imenik imenik = new Imenik();
-    @FXML Button btnDodaj, btnDajIme, btnDajBroj;
+    @FXML Button btnDodaj, btnDajIme, btnDajBroj, btnBrojeviSaSlovom;
     @FXML TextField fldIme, fldBroj, fldImeOsobe, fldBrojOsobe;
     @FXML ChoiceBox<FiksniBroj.Grad> choiceGrad, choiceGradOsobe;
+    @FXML ChoiceBox<String> choiceSlovo;
 
     @FXML
     public void Listener(TextField field) {
@@ -32,6 +34,14 @@ public class ImenikController {
         listaGradova.addAll(Arrays.asList(FiksniBroj.Grad.values()));
         choiceGrad.setItems(listaGradova);
         choiceGradOsobe.setItems(listaGradova);
+
+        ObservableList<String> slova = FXCollections.observableArrayList();
+        char slovo = 'A';
+        while(slovo != 'Z' + 1) {
+            slova.add(String.valueOf(slovo));
+            slovo++;
+        }
+        choiceSlovo.setItems(slova);
 
         Listener(fldIme);
         Listener(fldBroj);
@@ -89,6 +99,22 @@ public class ImenikController {
             }
             fldImeOsobe.setText("");
             fldImeOsobe.setStyle("");
+        }
+    }
+
+    public void dajSveBrojeveSaSlovom() {
+        if(choiceSlovo.getValue() != null) {
+            String brojevi = imenik.naSlovo(choiceSlovo.getValue().charAt(0)) +
+                             imenik.naSlovo(choiceSlovo.getValue().toLowerCase().charAt(0));
+            if(!brojevi.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText(brojevi);
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Ne postoji ni jedan kontak sa slovom " + choiceSlovo.getValue() + ".");
+                alert.showAndWait();
+            }
         }
     }
 }
